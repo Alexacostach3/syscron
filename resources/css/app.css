@@ -1,0 +1,10 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* AÑADIENDO BOOTSTRAP */
+@import "~bootstrap/dist/css/bootstrap.css";
+/* FIN */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
