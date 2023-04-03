@@ -355,6 +355,16 @@ defineProps({
                 class="btn btn-secondary"
                 >Register</Link
             >
+            <Link
+                :href="route('nosotros')"
+                class="btn btn-secondary"
+                >Nosotros</Link
+            >
+            <Link
+                :href="route('crudprofesor')"
+                class="btn btn-secondary"
+                >Crud</Link
+            >
         </template>
 
     </div>

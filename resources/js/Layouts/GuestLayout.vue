@@ -3,36 +3,21 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link } from '@inertiajs/vue3';
 </script>
 
-<!-- <template>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <div>
-            <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
-            </Link>
-        </div>
-
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg"
-        >
-            <slot />
-        </div>
-    </div>
-</template> -->
-
 <template>
 
-    <div class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center">
-             
-      <div class="card m-3 shadow" >
-       
-        <Link href="/" class="d-flex flex-column justify-content-center align-items-center">
-            <ApplicationLogo class="text-gray-500 "  style="width: 100px; height: 100px;"  />
-        </Link>
-        
+    <div class="row m-0 d-flex min-vh-100 flex-column justify-content-center align-items-center">
+        <div class="col-md-5">
+            <div class="card p-2 shadow" >
+                <Link href="/" class="p-3 d-flex flex-column justify-content-center align-items-center">
+                    <ApplicationLogo class="text-gray-500 "  style="width: 100px; height: 100px;"  />
+                </Link>  
+                <div class="card-body pt-0">
 
-        <div class="card-body">
-          <slot />
+                    <slot />
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
+
   </template>

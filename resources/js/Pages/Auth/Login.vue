@@ -93,7 +93,9 @@ const submit = () => {
 <script setup>
     
     import { Head, Link, useForm } from "@inertiajs/vue3";
-    import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+
+    import GuestLayout from '@/Layouts/GuestLayout.vue';
+    
 
     defineProps({
         canResetPassword: Boolean,
@@ -116,55 +118,46 @@ const submit = () => {
 <template>
     
     <Head title="Inicio Sesion" />
-    <div class="row m-0 d-flex min-vh-100 flex-column justify-content-center align-items-center">
-        <div class="col-md-5">
-            <div class="card p-2 shadow" >
-                <Link href="/" class="p-3 d-flex flex-column justify-content-center align-items-center">
-                    <ApplicationLogo class="text-gray-500 "  style="width: 100px; height: 100px;"  />
-                </Link>  
-                <div class="card-body px-4">
-
-                    <div class="row m-0 py-3 shadow rounded border">
-                        <div class="col-md-12">      
-                            <div v-if="status" class="alert alert-success">
-                                {{ status }}
-                            </div>
-                            <form @submit.prevent="submit">
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Usuario</label>
-                                    <input type="email" id="email" class="form-control"
-                                        v-model="form.email"
-                                        required
-                                        autofocus
-                                    />
-                                    <p class="text-danger" v-if="form.errors.email" v-text="form.errors.email"></p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="password">Contraseña</label>
-                                    <input type="password" class="form-control" required v-model="form.password">
-                                    <p class="text-danger" v-if="form.errors.password" v-text="form.errors.password"></p>
-                                </div>
-                                <div class="form-check">
-                                    <input id="remember" type="checkbox" class="form-check-input" v-model="form.remember">
-                                    <label for="remember" class="form-check-label">Recordarme</label>
-                                </div><div class="d-flex align-items-center justify-content-end mt-4">
-                                    <Link
-                                        v-if="canResetPassword"
-                                        :href="route('password.request')"
-                                        class="btn btn-link"
-                                    >
-                                        Olvido su contraseña?
-                                    </Link>
-                                    <button type="submit" class="btn btn-primary" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Iniciar Sesion</button>
-                                </div>
-                            </form>        
-                        </div>
+    <GuestLayout>
+        <div class="row m-0 py-3 shadow rounded border">
+            <div class="col-md-12">      
+                <div v-if="status" class="alert alert-success">
+                    {{ status }}
+                </div>
+                <form @submit.prevent="submit">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Usuario</label>
+                        <input type="email" id="email" class="form-control"
+                            v-model="form.email"
+                            required
+                            autofocus
+                        />
+                        <p class="text-danger" v-if="form.errors.email" v-text="form.errors.email"></p>
                     </div>
 
-                </div>
+                    <div class="mb-3">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="form-control" required v-model="form.password">
+                        <p class="text-danger" v-if="form.errors.password" v-text="form.errors.password"></p>
+                    </div>
+                    <div class="form-check">
+                        <input id="remember" class="form-check-input" 
+                            v-model="form.remember"
+                            type="checkbox">
+                        <label for="remember" class="form-check-label">Recordarme</label>
+                    </div><div class="d-flex align-items-center justify-content-end mt-4">
+                        <Link
+                            v-if="canResetPassword"
+                            :href="route('password.request')"
+                            class="btn btn-link"
+                        >
+                            Olvido su contraseña?
+                        </Link>
+                        <button type="submit" class="btn btn-primary" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">Iniciar Sesion</button>
+                    </div>
+                </form>        
             </div>
         </div>
-    </div>
+    </GuestLayout>
 
 </template>

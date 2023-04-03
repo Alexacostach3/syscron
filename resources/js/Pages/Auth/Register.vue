@@ -27,7 +27,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Names" />
 
                 <TextInput
                     id="name"
@@ -108,11 +108,11 @@ const submit = () => {
 
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
+import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 const form = useForm({
     name: '',
@@ -131,88 +131,78 @@ const submit = () => {
 <template>
     
     <Head title="Registrar" />
-    <div class="row m-0 d-flex min-vh-100 flex-column justify-content-center align-items-center">
-        <div class="col-md-5">
-            <div class="card p-2 shadow" >
-                <Link href="/" class="p-3 d-flex flex-column justify-content-center align-items-center">
-                    <ApplicationLogo class="text-gray-500 "  style="width: 100px; height: 100px;"  />
-                </Link>  
-                <div class="card-body px-4">
+    <GuestLayout>
+        <div class="row m-0 py-3 shadow rounded border">
+            <div class="col-md-12">      
+                <div v-if="status" class="alert alert-success">
+                    {{ status }}
+                </div>
+                <form @submit.prevent="submit">
+                                                    
+                    <div>
+                        <InputLabel for="name" value="Usuario" />
 
-                    <div class="row m-0 py-3 shadow rounded border">
-                        <div class="col-md-12">      
-                            <div v-if="status" class="alert alert-success">
-                                {{ status }}
-                            </div>
-                            <form @submit.prevent="submit">
-                                                               
-                                <div>
-                                    <InputLabel for="name" value="Usuario" />
+                        <TextInput id="name" type="text" class="mt-1 "
+                            v-model="form.name"
+                            required
+                            autofocus
+                            autocomplete="name"
+                            placeholder="Usuario"
+                        />
+                        <InputError class="mt-2" :message="form.errors.name" />
+                    </div>
 
-                                    <TextInput id="name" type="text" class="mt-1 "
-                                        v-model="form.name"
-                                        required
-                                        autofocus
-                                        autocomplete="name"
-                                        placeholder="Usuario"
-                                    />
-                                    <InputError class="mt-2" :message="form.errors.name" />
-                                </div>
+                    <div class="mt-2">
+                        <InputLabel for="email" value="Email" />
+                        <TextInput id="email" type="email" class="mt-1 block w-full"
+                            v-model="form.email"
+                            required
+                            autocomplete="username"
+                            placeholder="ejemplo@gmail.com"
+                        />
+                        <InputError class="mt-2" :message="form.errors.email" />
+                    </div>
 
-                                <div class="mt-2">
-                                    <InputLabel for="email" value="Email" />
-                                    <TextInput id="email" type="email" class="mt-1 block w-full"
-                                        v-model="form.email"
-                                        required
-                                        autocomplete="username"
-                                        placeholder="ejemplo@gmail.com"
-                                    />
-                                    <InputError class="mt-2" :message="form.errors.email" />
-                                </div>
+                    <div class="mt-2">
+                        <InputLabel for="password" value="Contraseña" />
+                        <TextInput id="password" type="password" class="mt-1 block w-full"
+                            v-model="form.password"
+                            required
+                            autocomplete="new-password"
+                            placeholder="*********"
+                        />
+                        <InputError class="mt-2" :message="form.errors.password" />
+                    </div>
 
-                                <div class="mt-2">
-                                    <InputLabel for="password" value="Contraseña" />
-                                    <TextInput id="password" type="password" class="mt-1 block w-full"
-                                        v-model="form.password"
-                                        required
-                                        autocomplete="new-password"
-                                        placeholder="*********"
-                                    />
-                                    <InputError class="mt-2" :message="form.errors.password" />
-                                </div>
+                    <div class="mt-2">
+                        <InputLabel for="password_confirmation" value="Confirme Contraseña" />
 
-                                <div class="mt-2">
-                                    <InputLabel for="password_confirmation" value="Confirme Contraseña" />
+                        <TextInput id="password_confirmation" type="password" class="mt-1 block w-full"
+                            v-model="form.password_confirmation"
+                            required
+                            autocomplete="new-password"
+                        />
 
-                                    <TextInput id="password_confirmation" type="password" class="mt-1 block w-full"
-                                        v-model="form.password_confirmation"
-                                        required
-                                        autocomplete="new-password"
-                                    />
+                        <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                    </div>
 
-                                    <InputError class="mt-2" :message="form.errors.password_confirmation" />
-                                </div>
+                    <div class="d-flex justify-content-end mt-2">
+                        <Link
+                            :href="route('login')"
+                            class="alert-link md:pt-5"
+                        >
+                            Tengo una cuenta
+                        </Link>
 
-                                <div class="d-flex justify-content-end mt-2">
-                                    <Link
-                                        :href="route('login')"
-                                        class="alert-link md:pt-5"
-                                    >
-                                        Tengo una cuenta
-                                    </Link>
-
-                                    <PrimaryButton class="btn btn-primary " :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                        Registrar
-                                    </PrimaryButton>
-                                </div>
-                                
-                            </form>        
-                        </div>
+                        <PrimaryButton class="btn btn-primary " :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                            Registrar
+                        </PrimaryButton>
                     </div>
                     
-                </div>
+                </form>        
             </div>
         </div>
-    </div>
+    </GuestLayout>             
+                
 
 </template>

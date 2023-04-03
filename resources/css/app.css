@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities; */
 
-/* AÑADIENDO BOOTSTRAP */
-@import "~bootstrap/dist/css/bootstrap.css";
+/* AÑADIENDO BOOTSTRAP SI ES NECESARIO SE LO PUEDE AÑADIR DESDE APP.BLADE CON @vite(url)*/
+@import "~bootstrap/dist/css/bootstrap.css"; 
 /* FIN */
 /* @tailwind base;
 @tailwind components;
