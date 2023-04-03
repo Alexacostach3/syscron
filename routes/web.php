@@ -43,7 +43,9 @@ Route::get('/crudProfe', function () {
     return Inertia::render('Repaso/CrudProfesor');
 })->name('crudprofesor');
 
-
+Route::get('/repaso', function () {
+    return Inertia::render('Repaso/PaginaPadre');
+})->name('padre');
 
 
 

@@ -365,6 +365,11 @@ defineProps({
                 class="btn btn-secondary"
                 >Crud</Link
             >
+            <Link
+                :href="route('padre')"
+                class="btn btn-secondary"
+                >Ciclo</Link
+            >
         </template>
 
     </div>
